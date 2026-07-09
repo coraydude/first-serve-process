@@ -54,6 +54,7 @@ img{max-width:100%;display:block}
 /* ---- hero ---- */
 .hero{position:relative;overflow:hidden;background:var(--navy)}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#123a6b 0%,#0D2B52 55%,#0A2140 100%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:url("img/hero-courthouse.jpg") center/cover no-repeat;opacity:.55}
 .hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,43,82,.96) 0%,rgba(13,43,82,.86) 50%,rgba(13,43,82,.62) 100%)}
 .hero-inner{position:relative;max-width:var(--shell);margin:0 auto;padding:72px 48px 64px;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start}
 .hero-copy{padding-top:8px}
@@ -117,7 +118,7 @@ img{max-width:100%;display:block}
 .why{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-left:48px;padding-right:48px}
 .section-alt.why{max-width:none}
 .why>*{max-width:none}
-.why-photo{height:380px;border-radius:14px;background:linear-gradient(135deg,#e7edf5,#d5dfec);position:relative}
+.why-photo{height:380px;border-radius:14px;background:linear-gradient(135deg,#e7edf5,#d5dfec) center/cover;background-image:url("img/signing-affidavit.jpg");background-size:cover;background-position:center;position:relative}
 .why-copy h2{font:700 32px/1.25 var(--serif);color:var(--navy);letter-spacing:-.5px;margin-bottom:24px}
 .why-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
 .why-list li{display:flex;gap:14px}
@@ -137,7 +138,7 @@ img{max-width:100%;display:block}
 .areas{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
 .areas-copy h2{font:700 32px/1.25 var(--serif);color:var(--navy);letter-spacing:-.5px;margin-bottom:14px}
 .areas-copy p{font:400 15.5px/1.65 var(--sans);color:var(--muted);margin-bottom:22px}
-.areas-map{height:220px;border-radius:12px;background:linear-gradient(135deg,#e7edf5,#d5dfec)}
+.areas-map{height:220px;border-radius:12px;background:linear-gradient(135deg,#e7edf5,#d5dfec);background-image:url("img/florida-skyline.jpg");background-size:cover;background-position:center 42%}
 .areas-chips{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;padding-top:44px}
 .chip{background:#fff;border:1px solid #dfe5ed;border-radius:999px;padding:10px 18px;font:600 14px var(--sans);color:var(--navy)}
 .chip:hover{border-color:var(--blue);color:var(--blue)}
