@@ -1,3 +1,35 @@
+/* =====================================================================
+   ServeManager Order Form wiring
+   ---------------------------------------------------------------------
+   Paste your branded ServeManager Order Form URL below. When set, every
+   "Request Service" call-to-action across the site opens it in a new tab.
+   While it's empty, those buttons keep their default behavior (the
+   contact page / on-page form), so nothing is broken in the meantime.
+
+   To go live: set ORDER_FORM_URL to your hosted form URL, e.g.
+   var ORDER_FORM_URL = 'https://www.servemanager.com/order/your-form-id';
+   ===================================================================== */
+var ORDER_FORM_URL = '';
+
+(function () {
+  if (!ORDER_FORM_URL) return;
+  // Point every Request Service CTA at the ServeManager order form (new tab).
+  // Matches the nav/CTA buttons and any link explicitly marked data-request.
+  var selectors = [
+    'a.btn[href="contact.html"]',      // nav + CTA-band "Request Service" buttons
+    'a[data-request]'                  // any element opted in explicitly
+  ];
+  document.querySelectorAll(selectors.join(',')).forEach(function (a) {
+    // Leave plain text "Contact" footer links alone — only Request Service CTAs.
+    var label = (a.textContent || '').toLowerCase();
+    if (a.hasAttribute('data-request') || label.indexOf('request service') !== -1) {
+      a.setAttribute('href', ORDER_FORM_URL);
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    }
+  });
+})();
+
 // Mobile nav toggle
 (function () {
   var nav = document.querySelector('.nav');

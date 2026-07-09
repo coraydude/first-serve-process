@@ -30,6 +30,16 @@ python3 -m http.server 8000
   added in this implementation.
 - **Quote form** validates client-side and shows a confirmation state. Wire the
   `submit` handler in `assets/main.js` to your CRM/email endpoint before launch.
+- **ServeManager Order Form intake** — the site is pre-wired to hand off every
+  "Request Service" button to a branded ServeManager hosted Order Form (which
+  creates a job in the ServeManager account, with document upload + optional
+  Stripe prepay). To activate: create the Order Form in ServeManager
+  (Settings → Order Forms; you must contact ServeManager support to enable it),
+  then set `ORDER_FORM_URL` at the top of `assets/main.js` to the hosted form
+  URL. Every Request Service CTA then opens it in a new tab. While the URL is
+  blank, those buttons fall back to the contact page (nothing breaks).
+  Note: the Order Form can only be linked to, not iframe-embedded —
+  ServeManager sends `X-Frame-Options: SAMEORIGIN`, which blocks embedding.
 - **Photography** — the hero, "why choose us", and service-areas blocks use
   legal-themed photos from Unsplash, stored in `assets/img/`:
   - `hero-courthouse.jpg` — courthouse colonnade (hero background)
