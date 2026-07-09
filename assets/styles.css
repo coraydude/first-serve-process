@@ -53,8 +53,8 @@ img{max-width:100%;display:block}
 
 /* ---- hero ---- */
 .hero{position:relative;overflow:hidden;background:var(--navy)}
-.hero-bg{position:absolute;inset:0;background:#0A1C36 url("img/hero-orlando.jpg") center/cover no-repeat}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,28,54,.9) 0%,rgba(10,28,54,.72) 42%,rgba(13,43,82,.34) 72%,rgba(13,43,82,.2) 100%)}
+.hero-bg{position:absolute;inset:0;background:#0A1C36 url("img/hero-courtroom.jpg") center 55%/cover no-repeat}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,28,54,.86) 0%,rgba(10,28,54,.6) 38%,rgba(13,43,82,.28) 66%,rgba(13,43,82,.14) 100%)}
 .hero-inner{position:relative;max-width:var(--shell);margin:0 auto;padding:72px 48px 64px;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start}
 .hero-copy{padding-top:8px}
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 14px;font:600 12.5px var(--sans);color:#e6ecf4;margin-bottom:22px}
