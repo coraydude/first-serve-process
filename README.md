@@ -39,5 +39,13 @@ python3 -m http.server 8000
   degrades gracefully if an image fails to load. Photos are free under the
   [Unsplash License](https://unsplash.com/license); swap them by replacing the
   files (keep the same names) or updating the `background-image` in `styles.css`.
-- Internal links (`services.html`, `contact.html`, etc.) point to the sibling
-  pages from the same design project, ready to be implemented next.
+- **Client portal** — the header's **Client Login** button links to
+  ServeManager's built-in client-collaboration portal
+  (`https://www.servemanager.com/login`), where invited clients see job
+  status, service attempts, GPS-stamped attempts, and downloadable
+  affidavits. Clients are invited from the company's ServeManager account
+  (My Account → collaborators). No custom backend is needed; the account-wide
+  ServeManager API key is never exposed. To later replace this with a fully
+  white-labeled portal on your own domain, build a small backend that holds
+  the API key server-side and proxies a per-client, read-only view of the
+  ServeManager REST API (jobs + `attempts` with `lat`/`lng`/`gps_timestamp`).
