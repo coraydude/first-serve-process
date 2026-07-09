@@ -34,9 +34,9 @@ img{max-width:100%;display:block}
 .btn-ghost:hover{background:rgba(255,255,255,.16);color:#fff}
 
 /* ---- nav ---- */
-.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;height:92px;padding:0 48px;background:#fff;border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;height:140px;padding:0 48px;background:#fff;border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:10px}
-.brand-logo{height:66px;width:auto;display:block}
+.brand-logo{height:110px;width:auto;display:block}
 .brand-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font:600 15px var(--serif)}
 .brand-mark--sm{width:30px;height:30px;border-radius:8px;background:var(--blue);font-size:13px}
 .brand-name{font:600 17px var(--serif);color:var(--navy)}
@@ -212,8 +212,8 @@ img{max-width:100%;display:block}
   .cta-band{padding:40px 32px}
 }
 @media(max-width:600px){
-  .nav{padding:0 18px;height:80px}
-  .brand-logo{height:58px}
+  .nav{padding:0 18px;height:96px}
+  .brand-logo{height:72px;max-width:62vw;object-fit:contain;object-position:left center}
   .brand-name{font-size:15px}
   .hero-inner{padding:44px 18px 40px}
   .hero h1{font-size:31px;letter-spacing:-.6px}
