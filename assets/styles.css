@@ -34,9 +34,9 @@ img{max-width:100%;display:block}
 .btn-ghost:hover{background:rgba(255,255,255,.16);color:#fff}
 
 /* ---- nav ---- */
-.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;padding:0 48px;background:#fff;border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;height:84px;padding:0 48px;background:#fff;border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:10px}
-.brand-logo{height:44px;width:auto;display:block}
+.brand-logo{height:58px;width:auto;display:block}
 .brand-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font:600 15px var(--serif)}
 .brand-mark--sm{width:30px;height:30px;border-radius:8px;background:var(--blue);font-size:13px}
 .brand-name{font:600 17px var(--serif);color:var(--navy)}
@@ -199,9 +199,9 @@ img{max-width:100%;display:block}
 @media(max-width:860px){
   .nav-links,.nav-actions{display:none}
   .nav-toggle{display:flex}
-  .nav.open .nav-links{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 0;box-shadow:0 12px 24px rgba(13,43,82,.08)}
+  .nav.open .nav-links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 0 calc(8px + 66px);box-shadow:0 12px 24px rgba(13,43,82,.08)}
   .nav.open .nav-links a{padding:14px 28px;width:100%}
-  .nav.open .nav-actions{display:flex;position:absolute;top:calc(72px + 5*48px);left:0;right:0;justify-content:center;gap:14px;padding:12px 28px 18px;background:#fff;border-bottom:1px solid var(--line)}
+  .nav.open .nav-actions{display:flex;position:absolute;top:calc(100% + 8px + 5*50px);left:0;right:0;justify-content:center;gap:14px;padding:12px 28px 18px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(13,43,82,.08)}
   .hero-inner{grid-template-columns:1fr;gap:32px}
   .hero h1{font-size:38px}
   .grid-3{grid-template-columns:1fr 1fr}
@@ -212,9 +212,8 @@ img{max-width:100%;display:block}
   .cta-band{padding:40px 32px}
 }
 @media(max-width:600px){
-  .nav{padding:0 18px;height:64px}
-  .nav.open .nav-links{top:64px}
-  .nav.open .nav-actions{top:calc(64px + 5*48px)}
+  .nav{padding:0 18px;height:74px}
+  .brand-logo{height:52px}
   .brand-name{font-size:15px}
   .hero-inner{padding:44px 18px 40px}
   .hero h1{font-size:31px;letter-spacing:-.6px}
