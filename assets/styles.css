@@ -579,3 +579,44 @@ img{max-width:100%;display:block}
   .hero-benefit{border-right:none}
   .hero h1{font-size:40px}
 }
+
+/* =====================================================================
+   INTERIOR-PAGE RHYTHM — match the home page's visual flow
+   ===================================================================== */
+
+/* benefit cards get a gold top accent + auto-numbered gold marker so the
+   row reads as a designed feature strip (like the home trust bar) */
+.benefits{counter-reset:bnf}
+.benefit{position:relative;border-top:3px solid var(--gold);padding-top:22px}
+.benefit::before{counter-increment:bnf;content:"0" counter(bnf);position:absolute;top:16px;right:18px;font:700 22px var(--display);color:#eadfc4;letter-spacing:.5px}
+.benefit h3{padding-right:34px}
+
+/* a full navy band section (dark break between white sections, like the
+   home "How It Works" band). Add class="section section-navy". */
+.section-navy{background:var(--navy);position:relative}
+.section-navy .section-title,.section-navy h2{color:#fff}
+.section-navy .lede,.section-navy p{color:#aeb9cb}
+.section-navy .eyebrow{color:var(--gold)}
+.section-navy .split-body p{color:#c2ccdb}
+.section-navy .feature-list strong{color:#fff}
+.section-navy .feature-list span{color:#9fadc2}
+.section-navy .split-card{background:var(--navy-2);border:1px solid rgba(255,255,255,.08)}
+.section-navy .split-card h3{color:#fff}
+.section-navy .checklist{color:#dbe2ec}
+.section-navy a:not(.btn){color:var(--gold-soft)}
+.section-navy .split-note{border-top-color:rgba(255,255,255,.12);color:#9fadc2}
+
+/* gold section divider rule (small centered accent under headings) */
+.rule-gold{width:56px;height:3px;background:var(--gold);border-radius:2px;margin:0 auto 20px}
+.section-head .rule-gold{margin-bottom:20px}
+
+/* stat strip — reuse the home stat-tiles look on interior pages */
+.stat-strip{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.stat-strip .st{text-align:center}
+.stat-strip .st .n{font:700 36px var(--display);color:var(--gold);line-height:1}
+.stat-strip .st .l{font:600 12px var(--sans);color:var(--muted);letter-spacing:.6px;text-transform:uppercase;margin-top:6px}
+.section-navy .stat-strip .st .l{color:#9fadc2}
+
+@media(max-width:600px){
+  .stat-strip{grid-template-columns:1fr 1fr;gap:20px}
+}
