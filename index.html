@@ -20,20 +20,47 @@
 <body>
 
 <!-- ============ NAV ============ -->
-<header class="nav">
+<header class="nav" id="siteNav">
   <a class="brand" href="index.html" aria-label="First Serve Process Solutions — home">
     <img class="brand-logo" src="assets/logo.png" alt="First Serve Process Solutions — licensed Florida process servers" width="699" height="237">
   </a>
   <nav class="nav-links" id="navLinks">
-    <a href="services.html">Services</a>
-    <a href="service-areas.html">Service Areas</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
+    <div class="nav-item">
+      <button type="button" aria-haspopup="true">Services <svg class="caret" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="nav-menu">
+        <span class="mtop">Our Services</span>
+        <a href="process-serving.html">Process Serving</a>
+        <a href="rush-process-serving.html">Rush Process Serving</a>
+        <a href="same-day-process-service.html">Same-Day Service</a>
+        <a href="skip-tracing.html">Skip Tracing</a>
+        <a href="document-retrieval.html">Document Retrieval</a>
+        <a href="mobile-notary.html">Mobile Notary</a>
+        <a href="stakeout-services.html">Stakeout Services</a>
+        <a href="nationwide-process-serving.html">Nationwide Serving</a>
+        <a href="services.html">View all services →</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button type="button" aria-haspopup="true">Coverage <svg class="caret" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="nav-menu">
+        <span class="mtop">Florida Coverage</span>
+        <a href="service-areas.html">All 67 Counties</a>
+        <a href="service-areas.html">Orlando &amp; Central Florida</a>
+        <a href="service-areas.html">Tampa Bay</a>
+        <a href="service-areas.html">South Florida</a>
+        <a href="service-areas.html">North Florida</a>
+        <a href="nationwide-process-serving.html">Nationwide Service</a>
+      </div>
+    </div>
+    <div class="nav-item"><a href="about.html">About Us</a></div>
+    <div class="nav-item"><a href="contact.html">Contact</a></div>
   </nav>
   <div class="nav-actions">
-    <a class="nav-phone" href="tel:4076974530"><span class="dot"></span>(407) 697-4530</a>
-    <a class="nav-login" href="https://www.servemanager.com/login" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.5"/></svg>Client Login</a>
-    <a class="btn btn-primary" href="contact.html">Request Service</a>
+    <a class="nav-phone" href="tel:4076974530">
+      <span class="pico"><svg viewBox="0 0 16 16" fill="none"><path d="M3 3l2.5.5.8 3-1.3 1a9 9 0 0 0 4 4l1-1.3 3 .8L14 14a2 2 0 0 1-2 1.8A13 13 0 0 1 .2 3 2 2 0 0 1 2 1l1 2z" fill="currentColor"/></svg></span>
+      <span><span class="pnum">(407) 697-4530</span><br><span class="psub">Call or Text 24/7</span></span>
+    </a>
+    <a class="nav-login" href="https://www.servemanager.com/login" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.6"/></svg>Client Login</a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>

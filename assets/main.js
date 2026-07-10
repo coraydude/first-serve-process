@@ -30,23 +30,41 @@ var ORDER_FORM_URL = '';
   });
 })();
 
-// Mobile nav toggle
+// Nav: mobile drawer toggle + dropdown menus
 (function () {
   var nav = document.querySelector('.nav');
   var toggle = document.getElementById('navToggle');
-  if (toggle && nav) {
+  if (!nav) return;
+
+  if (toggle) {
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    // Close menu when a link is tapped
+    // Close the drawer when a real link is tapped (not a dropdown toggle button)
     nav.querySelectorAll('.nav-links a, .nav-actions a').forEach(function (a) {
       a.addEventListener('click', function () {
         nav.classList.remove('open');
+        nav.querySelectorAll('.nav-item.open').forEach(function (i) { i.classList.remove('open'); });
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
+
+  // Dropdown toggle buttons: on mobile (drawer open) they expand inline;
+  // on desktop the CSS :hover handles it, but a click still toggles for touch.
+  nav.querySelectorAll('.nav-item > button').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      if (window.matchMedia('(max-width: 980px)').matches) {
+        e.preventDefault();
+        var item = btn.parentElement;
+        var wasOpen = item.classList.contains('open');
+        // close siblings
+        nav.querySelectorAll('.nav-item.open').forEach(function (i) { if (i !== item) i.classList.remove('open'); });
+        item.classList.toggle('open', !wasOpen);
+      }
+    });
+  });
 })();
 
 // "Start Your Serve" upload widget — show picked files, then route to real intake.
