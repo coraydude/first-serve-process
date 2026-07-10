@@ -620,3 +620,10 @@ img{max-width:100%;display:block}
 @media(max-width:600px){
   .stat-strip{grid-template-columns:1fr 1fr;gap:20px}
 }
+
+/* benefit cards placed on a navy band → dark card treatment (not white) */
+.section-navy .benefit{background:var(--navy-2);border:1px solid rgba(255,255,255,.09);border-top:3px solid var(--gold);border-radius:12px;padding:22px}
+.section-navy .benefit h3{color:#fff}
+.section-navy .benefit p{color:#aeb9cb}
+.section-navy .benefit .benefit-sub{color:var(--gold-soft)}
+.section-navy .benefit::before{color:rgba(255,255,255,.18)}
