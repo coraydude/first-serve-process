@@ -627,3 +627,8 @@ img{max-width:100%;display:block}
 .section-navy .benefit p{color:#aeb9cb}
 .section-navy .benefit .benefit-sub{color:var(--gold-soft)}
 .section-navy .benefit::before{color:rgba(255,255,255,.18)}
+
+/* safety net: FAQ cards should never be plain white on a navy band */
+.section-navy .faq-list .qa{background:var(--navy-2);border-color:rgba(255,255,255,.09)}
+.section-navy .faq-list h3{color:#fff}
+.section-navy .faq-list p{color:#aeb9cb}
