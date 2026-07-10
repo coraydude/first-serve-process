@@ -49,30 +49,44 @@ var ORDER_FORM_URL = '';
   }
 })();
 
-// Quote form — front-end validation + graceful confirmation.
-// TODO: wire `action`/`fetch` to your CRM or email endpoint when the backend is ready.
+// "Start Your Serve" upload widget — show picked files, then route to real intake.
+// When ORDER_FORM_URL is set it opens the ServeManager order form; otherwise the
+// contact page. (True in-browser upload needs the backend/order form — no fake success.)
 (function () {
+  var fileInput = document.getElementById('serveFile');
+  var drop = document.querySelector('.serve-drop');
+  if (fileInput && drop) {
+    var big = drop.querySelector('.big');
+    var defaultBig = big ? big.textContent : '';
+    fileInput.addEventListener('change', function () {
+      if (!big) return;
+      if (fileInput.files && fileInput.files.length) {
+        var names = Array.prototype.map.call(fileInput.files, function (f) { return f.name; });
+        big.textContent = names.length === 1 ? names[0] : names.length + ' files selected';
+      } else {
+        big.textContent = defaultBig;
+      }
+    });
+    // Drag-over affordance
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      drop.addEventListener(ev, function (e) { e.preventDefault(); drop.style.borderColor = 'var(--gold)'; drop.style.background = '#fffdf6'; });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      drop.addEventListener(ev, function (e) { e.preventDefault(); drop.style.borderColor = ''; drop.style.background = ''; });
+    });
+    drop.addEventListener('drop', function (e) { if (e.dataTransfer && e.dataTransfer.files.length) { fileInput.files = e.dataTransfer.files; fileInput.dispatchEvent(new Event('change')); } });
+  }
+
+  // Generic quote/serve form submit — validate, then hand off to the real intake.
   var form = document.getElementById('quoteForm');
   if (!form) return;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (!form.reportValidity()) return;
+    if (form.reportValidity && !form.reportValidity()) return;
+    var dest = (typeof ORDER_FORM_URL !== 'undefined' && ORDER_FORM_URL) ? ORDER_FORM_URL : 'contact.html';
     var btn = form.querySelector('button[type="submit"]');
-    var original = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Request sent ✓';
-    btn.style.background = '#278139';
-    form.querySelectorAll('input, select, textarea').forEach(function (el) { el.disabled = true; });
-    var fine = form.querySelector('.quote-fine');
-    if (fine) fine.textContent = "Thanks! We'll reach out within 15 minutes during business hours.";
-    // Reset affordance after a moment in case the visitor wants to send another.
-    setTimeout(function () {
-      btn.disabled = false;
-      btn.textContent = original;
-      btn.style.background = '';
-      form.querySelectorAll('input, select, textarea').forEach(function (el) { el.disabled = false; });
-      form.reset();
-      if (fine) fine.textContent = 'No obligation · Confidential · Licensed Florida process servers';
-    }, 6000);
+    if (btn) { btn.textContent = 'Opening secure intake…'; btn.disabled = true; }
+    if (dest === 'contact.html') { window.location.href = dest; }
+    else { window.open(dest, '_blank', 'noopener'); if (btn) { btn.disabled = false; btn.textContent = 'Get Started Now →'; } }
   });
 })();

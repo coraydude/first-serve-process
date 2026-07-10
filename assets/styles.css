@@ -523,3 +523,57 @@ img{max-width:100%;display:block}
   .split.even > div:first-child:has(img.imgbox + img.imgbox){grid-template-columns:1fr 1fr}
   .split.even > div:first-child:has(img.imgbox + img.imgbox) > img:first-child{grid-column:1 / -1;grid-row:auto;min-height:200px}
 }
+
+/* =====================================================================
+   REDESIGN: trust-icon bar + stat tiles + how-it-works navy band
+   ===================================================================== */
+
+/* white trust bar (6 icon columns), overlaps up into the hero */
+.trustbar-wrap{max-width:var(--shell);margin:0 auto;padding:0 48px;position:relative;z-index:5}
+.trustbar{background:#fff;border-radius:16px;box-shadow:0 16px 40px rgba(10,23,48,.14);margin-top:-40px;display:grid;grid-template-columns:repeat(6,1fr);gap:0;padding:30px 10px}
+.trustbar .ti{text-align:center;padding:6px 16px;border-right:1px solid #eef0f4}
+.trustbar .ti:last-child{border-right:none}
+.trustbar .ti svg{width:30px;height:30px;margin-bottom:10px}
+.trustbar .ti .th{font:700 14px var(--display);color:var(--navy);letter-spacing:.3px;text-transform:uppercase;line-height:1.1;margin-bottom:6px}
+.trustbar .ti .td{font:400 12px/1.4 var(--sans);color:var(--muted)}
+
+/* how it works — navy band with numbered gold steps */
+.howworks{background:var(--navy);padding:56px 48px}
+.howworks .hw-head{text-align:center;margin-bottom:38px;display:flex;align-items:center;justify-content:center;gap:18px}
+.howworks .hw-head span{font:700 30px var(--display);color:#fff;text-transform:uppercase;letter-spacing:1px}
+.howworks .hw-head .rule{height:2px;width:60px;background:var(--gold)}
+.hw-grid{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start}
+.hw-step{display:flex;gap:14px}
+.hw-step .num{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--navy);font:700 15px var(--display);display:flex;align-items:center;justify-content:center;flex:none}
+.hw-step .num.alt{background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff}
+.hw-step h3{font:700 15px var(--display);color:#fff;text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.hw-step p{font:400 13px/1.55 var(--sans);color:#9fadc2}
+.hw-icon{color:var(--gold);margin-bottom:8px}
+.hw-icon svg{width:26px;height:26px}
+
+/* experience / stat tiles block (gold numbers) */
+.exp{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.exp-photo{border-radius:14px;overflow:hidden;position:relative;min-height:420px;background:#dfe3ea}
+.exp-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.exp-quote{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(10,23,48,.9);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;font:500 13.5px/1.5 var(--sans);color:#e6ecf4}
+.stat-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:28px}
+.stat-tile{text-align:center}
+.stat-tile svg{width:34px;height:34px;color:var(--gold);margin-bottom:8px}
+.stat-tile .n{font:700 34px var(--display);color:var(--gold);line-height:1}
+.stat-tile .l{font:600 11.5px var(--sans);color:var(--muted);letter-spacing:.6px;text-transform:uppercase;margin-top:5px}
+
+@media(max-width:1024px){
+  .trustbar{grid-template-columns:repeat(3,1fr);gap:20px 0}
+  .trustbar .ti:nth-child(3n){border-right:none}
+  .hw-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .exp{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:600px){
+  .trustbar{grid-template-columns:1fr 1fr;padding:22px 6px}
+  .trustbar .ti{border-right:none}
+  .hw-grid{grid-template-columns:1fr}
+  .stat-tiles{grid-template-columns:1fr 1fr;gap:20px}
+  .hero-benefits{grid-template-columns:1fr 1fr;gap:18px 0}
+  .hero-benefit{border-right:none}
+  .hero h1{font-size:40px}
+}
