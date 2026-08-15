@@ -584,7 +584,7 @@ img{max-width:100%;display:block}
 .exp-photo{border-radius:14px;overflow:hidden;position:relative;min-height:420px;background:#dfe3ea}
 .exp-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .exp-quote{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(10,23,48,.9);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;font:500 13.5px/1.5 var(--sans);color:#e6ecf4}
-.stat-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:28px}
+.stat-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
 .stat-tile{text-align:center}
 .stat-tile svg{width:34px;height:34px;color:var(--gold);margin-bottom:8px}
 .stat-tile .n{font:700 34px var(--display);color:var(--gold);line-height:1}
@@ -601,6 +601,7 @@ img{max-width:100%;display:block}
   .trustbar .ti{border-right:none}
   .hw-grid{grid-template-columns:1fr}
   .stat-tiles{grid-template-columns:1fr 1fr;gap:20px}
+  .stat-tiles .stat-tile:last-child:nth-child(odd){grid-column:1/-1}
   .hero-benefits{grid-template-columns:1fr 1fr;gap:18px 0}
   .hero-benefit{border-right:none}
   .hero h1{font-size:40px}
@@ -637,7 +638,7 @@ img{max-width:100%;display:block}
 .section-head .rule-gold{margin-bottom:20px}
 
 /* stat strip — reuse the home stat-tiles look on interior pages */
-.stat-strip{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.stat-strip{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .stat-strip .st{text-align:center}
 .stat-strip .st .n{font:700 36px var(--display);color:var(--gold);line-height:1}
 .stat-strip .st .l{font:600 12px var(--sans);color:var(--muted);letter-spacing:.6px;text-transform:uppercase;margin-top:6px}
@@ -645,6 +646,7 @@ img{max-width:100%;display:block}
 
 @media(max-width:600px){
   .stat-strip{grid-template-columns:1fr 1fr;gap:20px}
+  .stat-strip .st:last-child:nth-child(odd){grid-column:1/-1}
 }
 
 /* benefit cards placed on a navy band → dark card treatment (not white) */
