@@ -200,7 +200,7 @@ var INTAKE_EMAIL = 'serve@firstserveprocess.com';
 (function () {
   if (!('IntersectionObserver' in window)) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var els = document.querySelectorAll('.svc-card,.ab-commit-row,.qa,.step,.ab-panel,.split-card,.related-card,.stat-tile,.ab-portal,.ab-map-panel,.faq details');
+  var els = document.querySelectorAll('.svc-card,.ab-commit-row,.qa,.step,.ab-panel,.split-card,.related-card,.stat-tile,.ab-portal,.ab-map-panel,.faq details,.ab-doc,.ab-sms,.ab-timeline,.ab-daybar,.ab-locate,.ab-log,.ab-seal-card,.ab-evidence');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
       if (en.isIntersecting) { en.target.classList.add('rv-in'); io.unobserve(en.target); }
