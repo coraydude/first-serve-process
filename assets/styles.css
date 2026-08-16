@@ -232,7 +232,7 @@ img{max-width:100%;display:block}
 .cta-actions{display:flex;gap:14px;flex:none}
 
 /* ---- footer ---- */
-.footer{background:var(--navy-deep);padding:56px 48px 32px}
+.footer{background:var(--navy-deep);padding:88px 48px 32px}
 .footer-grid{max-width:var(--shell);margin:0 auto 44px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
 .footer-grid a,.footer-grid span{display:block;color:#8fa0b8;font:400 14px var(--sans);margin-bottom:9px}
 .footer-grid a:hover{color:#fff}
@@ -287,7 +287,8 @@ img{max-width:100%;display:block}
   .hero h1{font-size:31px;letter-spacing:-.6px}
   .hero-copy>p{font-size:16px}
   .btn-lg{flex:1}
-  .section,.footer{padding:52px 18px}
+  .section{padding:52px 18px}
+  .footer{padding:64px 18px 52px}
   .section-head h2,.cta-band h2{font-size:26px}
   .grid-3,.grid-4,.why-grid{grid-template-columns:1fr}
   .trust{gap:22px 36px;padding:24px 18px}
