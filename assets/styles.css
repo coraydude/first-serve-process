@@ -180,15 +180,7 @@ img{max-width:100%;display:block}
 .step p{font:400 13.5px/1.6 var(--sans);color:var(--muted)}
 
 /* ---- why choose ---- */
-.why{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-left:48px;padding-right:48px}
-.section-alt.why{max-width:none}
-.why>*{max-width:none}
-.why-photo{height:380px;border-radius:14px;background:linear-gradient(135deg,#e7edf5,#d5dfec) center/cover;background-image:url("img/signing-affidavit.jpg");background-size:cover;background-position:center;position:relative}
-.why-copy h2{font:700 32px/1.25 var(--serif);color:var(--navy);letter-spacing:-.5px;margin-bottom:24px}
-.why-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
-.why-list li{display:flex;gap:14px}
-.why-list strong{display:block;font:700 16px var(--display);text-transform:uppercase;letter-spacing:.3px;color:var(--navy)}
-.why-list span{display:block;font:400 14px/1.55 var(--sans);color:var(--muted)}
+.why-grid{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
 /* ---- testimonials ---- */
 .quote{background:var(--bg-alt);border-radius:12px;padding:26px;margin:0}
@@ -282,8 +274,7 @@ img{max-width:100%;display:block}
   .hero-inner{grid-template-columns:1fr;gap:32px}
   .hero h1{font-size:38px}
   .grid-3{grid-template-columns:1fr 1fr}
-  .why,.areas{grid-template-columns:1fr;gap:32px}
-  .why-photo{height:260px}
+  .areas{grid-template-columns:1fr;gap:32px}
   .areas-chips{padding-top:0}
   .callout,.cta-band{flex-direction:column;align-items:flex-start}
   .cta-band{padding:40px 32px}
@@ -298,7 +289,7 @@ img{max-width:100%;display:block}
   .btn-lg{flex:1}
   .section,.footer{padding:52px 18px}
   .section-head h2,.cta-band h2{font-size:26px}
-  .grid-3,.grid-4{grid-template-columns:1fr}
+  .grid-3,.grid-4,.why-grid{grid-template-columns:1fr}
   .trust{gap:22px 36px;padding:24px 18px}
   .callout-wrap,.cta-wrap{padding-left:18px;padding-right:18px}
   .cta-actions{flex-direction:column;width:100%}
