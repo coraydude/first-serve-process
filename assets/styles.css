@@ -606,6 +606,7 @@ img{max-width:100%;display:block}
 /* benefit cards get a gold top accent + auto-numbered gold marker so the
    row reads as a designed feature strip (like the home trust bar) */
 .benefits{counter-reset:bnf}
+.commit-grid{max-width:var(--shell);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;counter-reset:bnf}
 .benefit{position:relative;border-top:3px solid var(--gold);padding-top:22px}
 .benefit::before{counter-increment:bnf;content:"0" counter(bnf);position:absolute;top:16px;right:18px;font:700 22px var(--display);color:#eadfc4;letter-spacing:.5px}
 .benefit h3{padding-right:34px}
