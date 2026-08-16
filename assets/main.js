@@ -77,7 +77,7 @@ var INTAKE_API_URL = '';
 // path is a prefilled email to the dispatcher (or the ServeManager order form
 // when ORDER_FORM_URL is set). File pickers list the chosen documents and the
 // email tells the sender to attach exactly those files — no fake success.
-var INTAKE_EMAIL = 'serve@firstserveprocess.com';
+var INTAKE_EMAIL = 'hello@firstserveprocess.com';
 
 (function () {
   var fileInput = document.getElementById('serveFile');

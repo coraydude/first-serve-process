@@ -26,7 +26,7 @@ ServeManager  (job appears in your queue with documents attached)
 ```
 
 If the Worker or ServeManager is ever down, the website automatically falls
-back to opening a prefilled email to serve@firstserveprocess.com, so a client
+back to opening a prefilled email to hello@firstserveprocess.com, so a client
 request is never lost.
 
 ## What you need before starting
