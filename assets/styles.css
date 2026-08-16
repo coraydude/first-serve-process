@@ -897,3 +897,14 @@ img{max-width:100%;display:block}
 .ab-evidence .shot .rec i{width:8px;height:8px;border-radius:50%;background:var(--action-soft);animation:abBlink 1.4s steps(1) infinite}
 .ab-evidence .erow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 20px;border-top:1px solid #f0f3f7;font:600 13px var(--sans);color:var(--navy)}
 .ab-evidence .erow span{font:400 12px var(--sans);color:#8b96a4}
+
+/* attempt windows panel (process serving local knowledge) */
+.ab-windows{background:#fff;border:1px solid #e7ebf1;border-radius:16px;padding:28px;box-shadow:0 24px 60px rgba(13,43,82,.14);max-width:440px;margin:0 auto}
+.ab-windows .whead{font:700 13px var(--display);letter-spacing:1.5px;text-transform:uppercase;color:var(--navy)}
+.ab-windows .wsub{font:400 12px var(--sans);color:#8b96a4;margin:3px 0 20px}
+.ab-windows .wrow{margin-bottom:16px}
+.ab-windows .wlbl{display:flex;justify-content:space-between;font:600 12px var(--sans);color:var(--navy);margin-bottom:6px}
+.ab-windows .wlbl span{font-weight:400;color:#8b96a4}
+.ab-windows .wtrack{position:relative;height:10px;border-radius:6px;background:var(--bg-alt)}
+.ab-windows .wseg{position:absolute;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,var(--navy),var(--action))}
+.ab-windows .wmarks{display:flex;justify-content:space-between;font:600 10px var(--sans);letter-spacing:.5px;color:#8b96a4;margin-top:14px;border-top:1px solid #f0f3f7;padding-top:10px}
