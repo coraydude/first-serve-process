@@ -779,3 +779,36 @@ img{max-width:100%;display:block}
 .ab-hero--page h1{font-size:clamp(36px,4.8vw,64px)}
 .ab-hero--page .ab-eyebrow{margin-top:26px}
 .ab-map-panel{background:var(--navy);border-radius:16px;padding:30px}
+
+/* =====================================================================
+   Editorial personality layer (About design language, site-wide)
+   ===================================================================== */
+/* FAQ: cards -> hairline editorial rows */
+.faq details{border:none;border-top:1px solid #e4e9f0;border-radius:0;padding:0 4px;background:transparent}
+.faq details:last-child{border-bottom:1px solid #e4e9f0}
+.faq details[open]{border-color:#e4e9f0}
+.faq summary{font:700 17px var(--display);text-transform:uppercase;letter-spacing:.3px;transition:color .15s ease}
+.faq summary:hover{color:var(--gold-deep)}
+.faq-list{gap:0}
+.faq-list .qa{background:transparent;border:none;border-top:1px solid #e4e9f0;border-radius:0;padding:26px 4px}
+.faq-list .qa:last-child{border-bottom:1px solid #e4e9f0}
+.faq-list h3{font-size:17px}
+.section-navy .faq-list .qa{background:transparent;border-color:rgba(255,255,255,.14)}
+/* how-it-works: outline numerals, hairline rows */
+.step{background:transparent;border-top:3px solid var(--gold);border-radius:0;padding:22px 4px 0}
+.step-num{width:auto;height:auto;border-radius:0;background:none;color:transparent;-webkit-text-stroke:1.2px var(--gold);font:700 42px/1 var(--display);display:block;margin-bottom:12px}
+.step-num--green{background:none;-webkit-text-stroke-color:var(--green)}
+@supports not (-webkit-text-stroke: 1px #000){.step-num{color:var(--gold)}.step-num--green{color:var(--green)}}
+/* commit rows on navy sections */
+.section-navy .ab-commit-row{border-color:rgba(255,255,255,.14)}
+.section-navy .ab-commit-row:last-child{border-bottom-color:rgba(255,255,255,.14)}
+.section-navy .ab-ctitle{color:#fff}
+.section-navy .ab-cdesc{color:#aeb9cb}
+/* service cards: gold accent on hover */
+.svc-card{border-top:3px solid transparent}
+.svc-card:hover{border-top-color:var(--gold)}
+/* scroll reveal (classes added by JS; no-JS pages stay fully visible) */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv-in{opacity:1;transform:translateY(0)}
+.ab-csub{display:block;font:600 12px var(--sans);letter-spacing:.5px;color:var(--gold-deep);text-transform:none;margin-top:6px}
+.section-navy .ab-csub{color:var(--gold-soft)}

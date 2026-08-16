@@ -154,3 +154,21 @@ var INTAKE_EMAIL = 'serve@firstserveprocess.com';
     }
   });
 })();
+
+// Scroll reveal — the About page personality, site-wide. Elements get .rv
+// only when JS runs, so content is always visible without it.
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.svc-card,.ab-commit-row,.qa,.step,.ab-panel,.split-card,.related-card,.stat-tile,.ab-portal,.ab-map-panel,.faq details');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('rv-in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
+  els.forEach(function (el, i) {
+    el.classList.add('rv');
+    el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    io.observe(el);
+  });
+})();
