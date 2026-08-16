@@ -970,3 +970,7 @@ img{max-width:100%;display:block}
 .ab-hero-map .mdot{fill:#C6C5C7}
 .ab-hero-map .mring{fill:none;stroke:#8b96a4}
 @media(max-width:980px){.ab-hero-map{display:none}}
+/* street map heroes: img variant + OSM credit */
+img.ab-hero-map{opacity:.4;width:min(46vw,600px)}
+.ab-hero .osm-credit{position:absolute;right:14px;bottom:10px;font:400 10px var(--sans);color:rgba(255,255,255,.3);z-index:2}
+@media(max-width:980px){.ab-hero .osm-credit{display:none}}
