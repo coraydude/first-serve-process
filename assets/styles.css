@@ -356,8 +356,8 @@ img{max-width:100%;display:block}
 /* ---- related-services cards ---- */
 .related-label{font:700 13px var(--sans);color:#77828f;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 16px}
 .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.related-card{background:var(--bg-alt);border-radius:12px;padding:22px;display:block}
-.related-card:hover{background:#eef2f7}
+.related-card{background:#fff;border:1px solid #e7ebf1;border-radius:12px;padding:22px;display:block;box-shadow:0 2px 6px rgba(13,43,82,.04);transition:transform .18s ease,box-shadow .18s ease}
+.related-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(13,43,82,.09)}
 .related-card strong{display:block;font:700 16px var(--display);text-transform:uppercase;letter-spacing:.3px;color:var(--navy);margin-bottom:6px}
 .related-card span{display:block;font:400 13.5px/1.55 var(--sans);color:var(--muted)}
 

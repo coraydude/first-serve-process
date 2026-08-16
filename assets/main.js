@@ -67,9 +67,12 @@ var ORDER_FORM_URL = '';
   });
 })();
 
-// "Start Your Serve" upload widget — show picked files, then route to real intake.
-// When ORDER_FORM_URL is set it opens the ServeManager order form; otherwise the
-// contact page. (True in-browser upload needs the backend/order form — no fake success.)
+// Intake forms. This is a static site with no backend, so the working intake
+// path is a prefilled email to the dispatcher (or the ServeManager order form
+// when ORDER_FORM_URL is set). File pickers list the chosen documents and the
+// email tells the sender to attach exactly those files — no fake success.
+var INTAKE_EMAIL = 'serve@firstserveprocess.com';
+
 (function () {
   var fileInput = document.getElementById('serveFile');
   var drop = document.querySelector('.serve-drop');
@@ -95,16 +98,59 @@ var ORDER_FORM_URL = '';
     drop.addEventListener('drop', function (e) { if (e.dataTransfer && e.dataTransfer.files.length) { fileInput.files = e.dataTransfer.files; fileInput.dispatchEvent(new Event('change')); } });
   }
 
-  // Generic quote/serve form submit — validate, then hand off to the real intake.
+  // Contact page attach row: real picker that lists the chosen files.
+  var attach = document.getElementById('attachFile');
+  var attachLabel = document.getElementById('attachLabel');
+  if (attach && attachLabel) {
+    var attachDefault = attachLabel.textContent;
+    attach.addEventListener('change', function () {
+      if (attach.files && attach.files.length) {
+        var names = Array.prototype.map.call(attach.files, function (f) { return f.name; });
+        attachLabel.textContent = (names.length === 1 ? names[0] : names.length + ' files') + ' ready. They go on the email that opens next.';
+      } else {
+        attachLabel.textContent = attachDefault;
+      }
+    });
+  }
+
+  // Quote/serve form submit: validate, then open the real intake — the
+  // ServeManager order form when configured, otherwise a prefilled email.
   var form = document.getElementById('quoteForm');
   if (!form) return;
+  var LABELS = { name: 'Name', company: 'Company / firm', phone: 'Phone', email: 'Email', service: 'Service needed', county: 'County', urgency: 'Urgency', address: 'Service address', details: 'Details' };
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (form.reportValidity && !form.reportValidity()) return;
-    var dest = (typeof ORDER_FORM_URL !== 'undefined' && ORDER_FORM_URL) ? ORDER_FORM_URL : 'contact.html';
+    if (typeof ORDER_FORM_URL !== 'undefined' && ORDER_FORM_URL) {
+      window.open(ORDER_FORM_URL, '_blank', 'noopener');
+      return;
+    }
+    var lines = [];
+    Object.keys(LABELS).forEach(function (key) {
+      var el = form.elements[key];
+      if (el && el.value) lines.push(LABELS[key] + ': ' + el.value);
+    });
+    var fileNames = [];
+    Array.prototype.forEach.call(form.querySelectorAll('input[type="file"]'), function (inp) {
+      Array.prototype.forEach.call(inp.files || [], function (f) { fileNames.push(f.name); });
+    });
+    lines.push('');
+    if (fileNames.length) {
+      lines.push('Documents to serve, please attach to this email before sending: ' + fileNames.join(', '));
+    } else {
+      lines.push('Please attach the documents to be served to this email before sending.');
+    }
+    lines.push('');
+    lines.push('Sent from firstserveprocess.com');
+    var service = form.elements.service ? form.elements.service.value : '';
+    var county = form.elements.county ? form.elements.county.value : '';
+    var subject = 'Service request' + (service ? ': ' + service : '') + (county ? ' (' + county + ' County)' : '');
+    window.location.href = 'mailto:' + INTAKE_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\r\n'));
     var btn = form.querySelector('button[type="submit"]');
-    if (btn) { btn.textContent = 'Opening secure intake…'; btn.disabled = true; }
-    if (dest === 'contact.html') { window.location.href = dest; }
-    else { window.open(dest, '_blank', 'noopener'); if (btn) { btn.disabled = false; btn.textContent = 'Get Started Now →'; } }
+    if (btn) {
+      var btnText = btn.textContent;
+      btn.textContent = 'Email opened. Attach documents & send';
+      setTimeout(function () { btn.textContent = btnText; }, 6000);
+    }
   });
 })();
