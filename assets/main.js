@@ -90,7 +90,7 @@ var INTAKE_EMAIL = 'serve@firstserveprocess.com';
     });
     // Drag-over affordance
     ['dragover', 'dragenter'].forEach(function (ev) {
-      drop.addEventListener(ev, function (e) { e.preventDefault(); drop.style.borderColor = 'var(--gold)'; drop.style.background = '#FAFAFA'; });
+      drop.addEventListener(ev, function (e) { e.preventDefault(); drop.style.borderColor = 'var(--action)'; drop.style.background = '#FAFAFA'; });
     });
     ['dragleave', 'drop'].forEach(function (ev) {
       drop.addEventListener(ev, function (e) { e.preventDefault(); drop.style.borderColor = ''; drop.style.background = ''; });
