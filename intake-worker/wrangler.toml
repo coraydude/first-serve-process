@@ -1,0 +1,6 @@
+name = "first-serve-intake"
+main = "worker.js"
+compatibility_date = "2026-08-01"
+
+# The ServeManager API key is a SECRET, never in this file or in git:
+#   npx wrangler secret put SERVEMANAGER_API_KEY

@@ -11,6 +11,12 @@
    ===================================================================== */
 var ORDER_FORM_URL = '';
 
+/* Direct ServeManager sync — set this to the deployed intake worker URL
+   (see intake-worker/worker.js). When set, the homepage widget and the
+   contact form POST fields + documents straight to ServeManager through
+   the relay, with the email handoff as automatic fallback on failure. */
+var INTAKE_API_URL = '';
+
 (function () {
   if (!ORDER_FORM_URL) return;
   // Point every Request Service CTA at the ServeManager order form (new tab).
@@ -118,13 +124,7 @@ var INTAKE_EMAIL = 'serve@firstserveprocess.com';
   var form = document.getElementById('quoteForm');
   if (!form) return;
   var LABELS = { name: 'Name', company: 'Company / firm', phone: 'Phone', email: 'Email', service: 'Service needed', county: 'County', urgency: 'Urgency', address: 'Service address', details: 'Details' };
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (form.reportValidity && !form.reportValidity()) return;
-    if (typeof ORDER_FORM_URL !== 'undefined' && ORDER_FORM_URL) {
-      window.open(ORDER_FORM_URL, '_blank', 'noopener');
-      return;
-    }
+  function emailHandoff() {
     var lines = [];
     Object.keys(LABELS).forEach(function (key) {
       var el = form.elements[key];
@@ -146,12 +146,52 @@ var INTAKE_EMAIL = 'serve@firstserveprocess.com';
     var county = form.elements.county ? form.elements.county.value : '';
     var subject = 'Service request' + (service ? ': ' + service : '') + (county ? ' (' + county + ' County)' : '');
     window.location.href = 'mailto:' + INTAKE_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\r\n'));
-    var btn = form.querySelector('button[type="submit"]');
-    if (btn) {
-      var btnText = btn.textContent;
-      btn.textContent = 'Email opened. Attach documents & send';
-      setTimeout(function () { btn.textContent = btnText; }, 6000);
+    setBtn('Email opened. Attach documents & send', false, 6000);
+  }
+
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var submitDefault = submitBtn ? submitBtn.textContent : '';
+  function setBtn(text, disabled, revertMs) {
+    if (!submitBtn) return;
+    submitBtn.textContent = text;
+    submitBtn.disabled = !!disabled;
+    if (revertMs) setTimeout(function () { submitBtn.textContent = submitDefault; submitBtn.disabled = false; }, revertMs);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form.reportValidity && !form.reportValidity()) return;
+    if (INTAKE_API_URL) {
+      var fd = new FormData(form);
+      setBtn('Sending to our dispatch system…', true);
+      fetch(INTAKE_API_URL, { method: 'POST', body: fd })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data || !data.ok) throw new Error((data && data.error) || 'intake failed');
+          if (data.failed && data.failed.length) {
+            setBtn('Received — please email: ' + data.failed.join(', '), false, 12000);
+          } else {
+            setBtn('Received ✓ We are on it', false, 12000);
+            form.reset();
+            var big = document.querySelector('.serve-drop .big');
+            if (big) big.textContent = 'Drag & Drop Your Documents Here';
+            var attach = document.getElementById('attachLabel');
+            if (attach) attach.textContent = '⇧ Select documents (PDF)';
+          }
+        })
+        .catch(function () {
+          // Relay or ServeManager down: fall back to the email handoff so
+          // the request is never lost.
+          setBtn(submitDefault, false);
+          emailHandoff();
+        });
+      return;
     }
+    if (typeof ORDER_FORM_URL !== 'undefined' && ORDER_FORM_URL) {
+      window.open(ORDER_FORM_URL, '_blank', 'noopener');
+      return;
+    }
+    emailHandoff();
   });
 })();
 
